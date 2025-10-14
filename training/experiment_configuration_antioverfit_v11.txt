@@ -1,0 +1,58 @@
+{
+  "experiment_date": "2025-10-11 18:04:39",
+  "mode": "V11 - MAXIMUM REGULARIZATION (CORRECTED)",
+  "version": "V11 (Goal: Gap < 0.04) - Without Label Smoothing",
+  "main_objective": "Reduce loss gap from ~0.10 (V10) to < 0.04",
+  "v11_corrections": [
+    "CORRECTED: Removed label_smoothing (not supported in your TensorFlow)",
+    "ADDED: Noise injection as alternative to label_smoothing",
+    "ADDED: Variable batch size (4,6,8) for more regularization",
+    "MAINTAINED: All other regularization improvements"
+  ],
+  "v11_improvements": [
+    "Even lower learning rates: 5e-6 to 8e-7",
+    "More aggressive dropout: 0.4-0.7 (vs V10: 0.3-0.6)",
+    "Stronger L2 regularization: 0.05-0.5 (vs V10: 0.01-0.5)",
+    "Added noise injection: 0.01-0.03 (replaces label_smoothing)",
+    "Variable batch size: 4-8 (more regularization)",
+    "Increased manual weight decay: 0.02 (vs V10: 0.01)",
+    "Stronger bias/activity regularization: 0.2 (vs V10: 0.1)",
+    "More aggressive LR reduction: 0.15 (vs V10: 0.2)",
+    "Increased patience: 8 (vs V10: 6) for better convergence",
+    "Specific monitoring for gap < 0.04"
+  ],
+  "model": "distilbert-base-multilingual-cased",
+  "dataset": "corpus_unificado_es_deforma_completo.csv",
+  "data_configuration": {
+    "max_length": 128,
+    "train_size": 43171,
+    "val_size": 6167,
+    "test_size": 12336,
+    "split_percentages": "70% / 10% / 20%"
+  },
+  "v11_configuration": {
+    "tuning_epochs": 8,
+    "final_training_epochs": 30,
+    "early_stopping_patience": 8,
+    "reduce_lr_patience": 1,
+    "lr_reduction_factor": 0.15,
+    "restore_best_weights": true,
+    "optimizer": "Traditional Adam with MAXIMUM regularization",
+    "regularization": "Strong L2 + Aggressive Dropout + Noise injection + Manual weight decay 2x"
+  },
+  "v11_objectives": {
+    "loss_gap_goal": "< 0.04",
+    "loss_gap_excellent": "< 0.02",
+    "accuracy_gap_goal": "< 0.04",
+    "expected_convergence": "Loss lines much closer"
+  },
+  "best_hyperparameters": {
+    "learning_rate": 5e-06,
+    "dropout_rate": 0.5,
+    "l2_regularization": 0.2,
+    "noise_factor": 0.03,
+    "batch_size": 6,
+    "batch_size_used": 6
+  },
+  "mixed_precision": "mixed_float16"
+}

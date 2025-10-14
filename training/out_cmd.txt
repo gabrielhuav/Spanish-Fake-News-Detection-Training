@@ -1,0 +1,709 @@
+
+(tf-env) C:\Users\gabri\Downloads\Articulo 1 JCR\Final_v2 11OCT2025>python distilbert_training_en.py
+================================================================================
+  V11 TRAINING - MAXIMUM REGULARIZATION (Goal: Gap < 0.04) - CORRECTED
+================================================================================
+V10 -> V11 ANALYSIS:
+   V10 Observed gap: ~0.10 (HIGH category)
+   V11 Goal: < 0.04 (GOOD category)
+   Required reduction: ~60% of current gap
+
+V11 CORRECTIONS:
+   X Label smoothing removed (not supported)
+   + Noise injection added (alternative)
+   + Variable batch size (4,6,8)
+
+V11 MAINTAINED STRATEGIES:
+   - LOWER learning rates: 5e-6 to 8e-7
+   - MORE AGGRESSIVE dropout: 0.4-0.7
+   - STRONGER L2 regularization: Minimum 0.05
+   - Manual weight decay 2X: 0.02
+   - Bias/Activity regularization 2X: 0.2
+   - More aggressive LR reduction: 0.15
+   - Increased patience: 8 epochs
+================================================================================
+GPU detected: PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')
+Mixed Precision: mixed_float16
+--- Phase 1: Loading and processing corpus (V11 MODE - MAXIMUM REGULARIZATION CORRECTED) ---
+
+--- Corpus Balance Analysis ---
+Total clean records: 61674
+FAKE news (0): 30734 records (49.8%)
+REAL news (1): 30940 records (50.2%)
+-------------------------------------------------
+
+V11 Split: 70% training, 10% validation, 20% test...
+Using batch_size: 8
+Training set size: 43171 records (70.0%)
+Validation set size: 6167 records (10.0%)
+Test set size: 12336 records (20.0%)
+
+Loading tokenizer for model: 'distilbert-base-multilingual-cased'
+C:\Users\gabri\.conda\envs\tf-env\lib\site-packages\huggingface_hub\file_download.py:943: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Tokenizing with MAX_LENGTH=128 (reduced to avoid overfitting)...
+
+--- Phase 2: V11 Optimization (Maximum Regularization CORRECTED) ---
+SPECIFIC GOAL: Loss gap < 0.04
+Hyperparameters with maximum regularization (without label_smoothing)
+Some weights of the PyTorch model were not used when initializing the TF 2.0 model TFDistilBertForSequenceClassification: ['vocab_projector.bias', 'vocab_layer_norm.weight', 'vocab_transform.weight', 'vocab_transform.bias', 'vocab_layer_norm.bias']
+- This IS expected if you are initializing TFDistilBertForSequenceClassification from a PyTorch model trained on another task or with another architecture (e.g. initializing a TFBertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing TFDistilBertForSequenceClassification from a PyTorch model that you expect to be exactly identical (e.g. initializing a TFBertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights or buffers of the TF 2.0 model TFDistilBertForSequenceClassification were not initialized from the PyTorch model and are newly initialized: ['pre_classifier.weight', 'pre_classifier.bias', 'classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+V11 CORRECTED: Using Adam with MAXIMUM regularization (without label_smoothing)
+Searching V11 hyperparameters (maximum regularization CORRECTED)...
+
+Search: Running Trial #1
+
+Value             |Best Value So Far |Hyperparameter
+5e-06             |5e-06             |learning_rate
+0.5               |0.5               |dropout_rate
+0.2               |0.2               |l2_regularization
+0.03              |0.03              |noise_factor
+6                 |6                 |batch_size
+
+C:\Users\gabri\.conda\envs\tf-env\lib\site-packages\huggingface_hub\file_download.py:943: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Some weights of the PyTorch model were not used when initializing the TF 2.0 model TFDistilBertForSequenceClassification: ['vocab_projector.bias', 'vocab_layer_norm.weight', 'vocab_transform.weight', 'vocab_transform.bias', 'vocab_layer_norm.bias']
+- This IS expected if you are initializing TFDistilBertForSequenceClassification from a PyTorch model trained on another task or with another architecture (e.g. initializing a TFBertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing TFDistilBertForSequenceClassification from a PyTorch model that you expect to be exactly identical (e.g. initializing a TFBertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights or buffers of the TF 2.0 model TFDistilBertForSequenceClassification were not initialized from the PyTorch model and are newly initialized: ['pre_classifier.weight', 'pre_classifier.bias', 'classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+V11 CORRECTED: Using Adam with MAXIMUM regularization (without label_smoothing)
+Epoch 1/8
+5397/5397 [==============================] - ETA: 0s - loss: 5.9698 - accuracy: 0.5589
+V11 Monitoring Epoch 1:
+   Loss gap (val - train): -5.2674
+   Accuracy gap (train - val): -0.1105
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+5397/5397 [==============================] - 738s 134ms/step - loss: 5.9698 - accuracy: 0.5589 - val_loss: 0.7025 - val_accuracy: 0.6694
+Epoch 2/8
+5397/5397 [==============================] - ETA: 0s - loss: 0.7297 - accuracy: 0.5630
+V11 Monitoring Epoch 2:
+   Loss gap (val - train): -0.0352
+   Accuracy gap (train - val): -0.1069
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+5397/5397 [==============================] - 705s 131ms/step - loss: 0.7297 - accuracy: 0.5630 - val_loss: 0.6946 - val_accuracy: 0.6699
+Epoch 3/8
+5397/5397 [==============================] - ETA: 0s - loss: 0.6881 - accuracy: 0.6592
+V11 Monitoring Epoch 3:
+   Loss gap (val - train): -0.1522
+   Accuracy gap (train - val): -0.2171
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+5397/5397 [==============================] - 708s 131ms/step - loss: 0.6881 - accuracy: 0.6592 - val_loss: 0.5359 - val_accuracy: 0.8763
+Epoch 4/8
+5397/5397 [==============================] - ETA: 0s - loss: 0.4736 - accuracy: 0.9070
+V11 Monitoring Epoch 4:
+   Loss gap (val - train): -0.0611
+   Accuracy gap (train - val): -0.0206
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+5397/5397 [==============================] - 705s 131ms/step - loss: 0.4736 - accuracy: 0.9070 - val_loss: 0.4125 - val_accuracy: 0.9277
+Epoch 5/8
+5397/5397 [==============================] - ETA: 0s - loss: 0.3891 - accuracy: 0.9385
+V11 Monitoring Epoch 5:
+   Loss gap (val - train): -0.0288
+   Accuracy gap (train - val): -0.0015
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+5397/5397 [==============================] - 704s 130ms/step - loss: 0.3891 - accuracy: 0.9385 - val_loss: 0.3603 - val_accuracy: 0.9400
+Epoch 6/8
+5397/5397 [==============================] - ETA: 0s - loss: 0.3485 - accuracy: 0.9506
+V11 Monitoring Epoch 6:
+   Loss gap (val - train): -0.0087
+   Accuracy gap (train - val): 0.0067
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+5397/5397 [==============================] - 704s 130ms/step - loss: 0.3485 - accuracy: 0.9506 - val_loss: 0.3399 - val_accuracy: 0.9439
+Epoch 7/8
+5397/5397 [==============================] - ETA: 0s - loss: 0.3234 - accuracy: 0.9589
+V11 Monitoring Epoch 7:
+   Loss gap (val - train): 0.0022
+   Accuracy gap (train - val): 0.0131
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+5397/5397 [==============================] - 703s 130ms/step - loss: 0.3234 - accuracy: 0.9589 - val_loss: 0.3256 - val_accuracy: 0.9458
+Epoch 8/8
+5397/5397 [==============================] - ETA: 0s - loss: 0.3039 - accuracy: 0.9664
+V11 Monitoring Epoch 8:
+   Loss gap (val - train): 0.0178
+   Accuracy gap (train - val): 0.0174
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+5397/5397 [==============================] - 704s 130ms/step - loss: 0.3039 - accuracy: 0.9664 - val_loss: 0.3217 - val_accuracy: 0.9491
+
+Trial 1 Complete [01h 34m 33s]
+val_loss: 0.32170528173446655
+
+Best val_loss So Far: 0.32170528173446655
+Total elapsed time: 01h 34m 33s
+
+Search: Running Trial #2
+
+Value             |Best Value So Far |Hyperparameter
+1e-06             |5e-06             |learning_rate
+0.5               |0.5               |dropout_rate
+0.2               |0.2               |l2_regularization
+0.02              |0.03              |noise_factor
+6                 |6                 |batch_size
+
+Some weights of the PyTorch model were not used when initializing the TF 2.0 model TFDistilBertForSequenceClassification: ['vocab_projector.bias', 'vocab_layer_norm.weight', 'vocab_transform.weight', 'vocab_transform.bias', 'vocab_layer_norm.bias']
+- This IS expected if you are initializing TFDistilBertForSequenceClassification from a PyTorch model trained on another task or with another architecture (e.g. initializing a TFBertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing TFDistilBertForSequenceClassification from a PyTorch model that you expect to be exactly identical (e.g. initializing a TFBertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights or buffers of the TF 2.0 model TFDistilBertForSequenceClassification were not initialized from the PyTorch model and are newly initialized: ['pre_classifier.weight', 'pre_classifier.bias', 'classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+V11 CORRECTED: Using Adam with MAXIMUM regularization (without label_smoothing)
+Epoch 1/8
+5397/5397 [==============================] - ETA: 0s - loss: inf - accuracy: 0.5052
+V11 Monitoring Epoch 1:
+   Loss gap (val - train): -inf
+   Accuracy gap (train - val): -0.0243
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+5397/5397 [==============================] - 724s 132ms/step - loss: inf - accuracy: 0.5052 - val_loss: 0.7952 - val_accuracy: 0.5296
+Epoch 2/8
+5397/5397 [==============================] - ETA: 0s - loss: 0.8835 - accuracy: 0.5263
+V11 Monitoring Epoch 2:
+   Loss gap (val - train): -0.1818
+   Accuracy gap (train - val): -0.1326
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+5397/5397 [==============================] - 709s 131ms/step - loss: 0.8835 - accuracy: 0.5263 - val_loss: 0.7016 - val_accuracy: 0.6588
+Epoch 3/8
+5397/5397 [==============================] - ETA: 0s - loss: 0.7455 - accuracy: 0.5153
+V11 Monitoring Epoch 3:
+   Loss gap (val - train): -0.0510
+   Accuracy gap (train - val): 0.0108
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+5397/5397 [==============================] - 708s 131ms/step - loss: 0.7455 - accuracy: 0.5153 - val_loss: 0.6945 - val_accuracy: 0.5045
+Epoch 4/8
+5397/5397 [==============================] - ETA: 0s - loss: 0.7187 - accuracy: 0.5038
+V11 Monitoring Epoch 4:
+   Loss gap (val - train): -0.0249
+   Accuracy gap (train - val): 0.0055
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+5397/5397 [==============================] - 710s 132ms/step - loss: 0.7187 - accuracy: 0.5038 - val_loss: 0.6938 - val_accuracy: 0.4983
+Epoch 5/8
+5397/5397 [==============================] - ETA: 0s - loss: 0.7083 - accuracy: 0.5025
+V11 Monitoring Epoch 5:
+   Loss gap (val - train): -0.0145
+   Accuracy gap (train - val): -0.1865
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+5397/5397 [==============================] - 706s 131ms/step - loss: 0.7083 - accuracy: 0.5025 - val_loss: 0.6938 - val_accuracy: 0.6890
+Epoch 6/8
+5397/5397 [==============================] - ETA: 0s - loss: 0.7033 - accuracy: 0.5025
+V11 Monitoring Epoch 6:
+   Loss gap (val - train): -0.0097
+   Accuracy gap (train - val): -0.0238
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+5397/5397 [==============================] - 710s 132ms/step - loss: 0.7033 - accuracy: 0.5025 - val_loss: 0.6936 - val_accuracy: 0.5263
+Epoch 7/8
+5397/5397 [==============================] - ETA: 0s - loss: 0.7004 - accuracy: 0.5228
+V11 Monitoring Epoch 7:
+   Loss gap (val - train): -0.0096
+   Accuracy gap (train - val): -0.0339
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+5397/5397 [==============================] - 708s 131ms/step - loss: 0.7004 - accuracy: 0.5228 - val_loss: 0.6908 - val_accuracy: 0.5567
+Epoch 8/8
+5397/5397 [==============================] - ETA: 0s - loss: 0.6635 - accuracy: 0.7840
+V11 Monitoring Epoch 8:
+   Loss gap (val - train): -0.0568
+   Accuracy gap (train - val): -0.0838
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+5397/5397 [==============================] - 709s 131ms/step - loss: 0.6635 - accuracy: 0.7840 - val_loss: 0.6067 - val_accuracy: 0.8678
+
+Trial 2 Complete [01h 34m 47s]
+val_loss: 0.6067134141921997
+
+Best val_loss So Far: 0.32170528173446655
+Total elapsed time: 03h 09m 21s
+
+Search: Running Trial #3
+
+Value             |Best Value So Far |Hyperparameter
+2e-06             |5e-06             |learning_rate
+0.5               |0.5               |dropout_rate
+0.2               |0.2               |l2_regularization
+0.02              |0.03              |noise_factor
+4                 |6                 |batch_size
+
+Some weights of the PyTorch model were not used when initializing the TF 2.0 model TFDistilBertForSequenceClassification: ['vocab_projector.bias', 'vocab_layer_norm.weight', 'vocab_transform.weight', 'vocab_transform.bias', 'vocab_layer_norm.bias']
+- This IS expected if you are initializing TFDistilBertForSequenceClassification from a PyTorch model trained on another task or with another architecture (e.g. initializing a TFBertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing TFDistilBertForSequenceClassification from a PyTorch model that you expect to be exactly identical (e.g. initializing a TFBertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights or buffers of the TF 2.0 model TFDistilBertForSequenceClassification were not initialized from the PyTorch model and are newly initialized: ['pre_classifier.weight', 'pre_classifier.bias', 'classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+V11 CORRECTED: Using Adam with MAXIMUM regularization (without label_smoothing)
+Epoch 1/8
+5397/5397 [==============================] - ETA: 0s - loss: 11.5011 - accuracy: 0.5339
+V11 Monitoring Epoch 1:
+   Loss gap (val - train): -10.7749
+   Accuracy gap (train - val): -0.0729
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+5397/5397 [==============================] - 727s 133ms/step - loss: 11.5011 - accuracy: 0.5339 - val_loss: 0.7262 - val_accuracy: 0.6068
+Epoch 2/8
+5397/5397 [==============================] - ETA: 0s - loss: 0.7780 - accuracy: 0.5288
+V11 Monitoring Epoch 2:
+   Loss gap (val - train): -0.0820
+   Accuracy gap (train - val): 0.0266
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+GOOD V11: Accuracy gap between 0.02-0.04
+5397/5397 [==============================] - 715s 132ms/step - loss: 0.7780 - accuracy: 0.5288 - val_loss: 0.6959 - val_accuracy: 0.5022
+Epoch 3/8
+5397/5397 [==============================] - ETA: 0s - loss: 0.7209 - accuracy: 0.5021
+V11 Monitoring Epoch 3:
+   Loss gap (val - train): -0.0272
+   Accuracy gap (train - val): 0.0004
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+5397/5397 [==============================] - 714s 132ms/step - loss: 0.7209 - accuracy: 0.5021 - val_loss: 0.6937 - val_accuracy: 0.5017
+Epoch 4/8
+5397/5397 [==============================] - ETA: 0s - loss: 0.7063 - accuracy: 0.5018
+V11 Monitoring Epoch 4:
+   Loss gap (val - train): -0.0123
+   Accuracy gap (train - val): -0.0007
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+5397/5397 [==============================] - 707s 131ms/step - loss: 0.7063 - accuracy: 0.5018 - val_loss: 0.6940 - val_accuracy: 0.5025
+Epoch 5/8
+5397/5397 [==============================] - ETA: 0s - loss: 0.6845 - accuracy: 0.6496
+V11 Monitoring Epoch 5:
+   Loss gap (val - train): -0.0957
+   Accuracy gap (train - val): -0.2128
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+5397/5397 [==============================] - 712s 132ms/step - loss: 0.6845 - accuracy: 0.6496 - val_loss: 0.5888 - val_accuracy: 0.8623
+Epoch 6/8
+5397/5397 [==============================] - ETA: 0s - loss: 0.5593 - accuracy: 0.8752
+V11 Monitoring Epoch 6:
+   Loss gap (val - train): -0.0563
+   Accuracy gap (train - val): -0.0145
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+5397/5397 [==============================] - 714s 132ms/step - loss: 0.5593 - accuracy: 0.8752 - val_loss: 0.5030 - val_accuracy: 0.8897
+Epoch 7/8
+5397/5397 [==============================] - ETA: 0s - loss: 0.4960 - accuracy: 0.8986
+V11 Monitoring Epoch 7:
+   Loss gap (val - train): -0.0369
+   Accuracy gap (train - val): -0.0053
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+5397/5397 [==============================] - 712s 132ms/step - loss: 0.4960 - accuracy: 0.8986 - val_loss: 0.4590 - val_accuracy: 0.9038
+Epoch 8/8
+5397/5397 [==============================] - ETA: 0s - loss: 0.4501 - accuracy: 0.9147
+V11 Monitoring Epoch 8:
+   Loss gap (val - train): -0.0343
+   Accuracy gap (train - val): -0.0022
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+5397/5397 [==============================] - 713s 132ms/step - loss: 0.4501 - accuracy: 0.9147 - val_loss: 0.4158 - val_accuracy: 0.9168
+
+Trial 3 Complete [01h 35m 17s]
+val_loss: 0.415833443403244
+
+Best val_loss So Far: 0.32170528173446655
+Total elapsed time: 04h 44m 38s
+
+Search: Running Trial #4
+
+Value             |Best Value So Far |Hyperparameter
+1e-06             |5e-06             |learning_rate
+0.7               |0.5               |dropout_rate
+0.05              |0.2               |l2_regularization
+0.02              |0.03              |noise_factor
+4                 |6                 |batch_size
+
+Some weights of the PyTorch model were not used when initializing the TF 2.0 model TFDistilBertForSequenceClassification: ['vocab_projector.bias', 'vocab_layer_norm.weight', 'vocab_transform.weight', 'vocab_transform.bias', 'vocab_layer_norm.bias']
+- This IS expected if you are initializing TFDistilBertForSequenceClassification from a PyTorch model trained on another task or with another architecture (e.g. initializing a TFBertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing TFDistilBertForSequenceClassification from a PyTorch model that you expect to be exactly identical (e.g. initializing a TFBertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights or buffers of the TF 2.0 model TFDistilBertForSequenceClassification were not initialized from the PyTorch model and are newly initialized: ['pre_classifier.weight', 'pre_classifier.bias', 'classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+V11 CORRECTED: Using Adam with MAXIMUM regularization (without label_smoothing)
+Epoch 1/8
+5397/5397 [==============================] - ETA: 0s - loss: 5.5995 - accuracy: 0.5160
+V11 Monitoring Epoch 1:
+   Loss gap (val - train): -4.8804
+   Accuracy gap (train - val): -0.0551
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+5397/5397 [==============================] - 726s 132ms/step - loss: 5.5995 - accuracy: 0.5160 - val_loss: 0.7191 - val_accuracy: 0.5711
+Epoch 2/8
+5397/5397 [==============================] - ETA: 0s - loss: 0.7414 - accuracy: 0.5679
+V11 Monitoring Epoch 2:
+   Loss gap (val - train): -0.0458
+   Accuracy gap (train - val): -0.0731
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+5397/5397 [==============================] - 710s 131ms/step - loss: 0.7414 - accuracy: 0.5679 - val_loss: 0.6955 - val_accuracy: 0.6410
+Epoch 3/8
+5397/5397 [==============================] - ETA: 0s - loss: 0.7071 - accuracy: 0.5897
+V11 Monitoring Epoch 3:
+   Loss gap (val - train): -0.0140
+   Accuracy gap (train - val): -0.0667
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+5397/5397 [==============================] - 710s 132ms/step - loss: 0.7071 - accuracy: 0.5897 - val_loss: 0.6931 - val_accuracy: 0.6564
+Epoch 4/8
+5397/5397 [==============================] - ETA: 0s - loss: 0.6812 - accuracy: 0.7679
+V11 Monitoring Epoch 4:
+   Loss gap (val - train): -0.1396
+   Accuracy gap (train - val): -0.0711
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+5397/5397 [==============================] - 712s 132ms/step - loss: 0.6812 - accuracy: 0.7679 - val_loss: 0.5416 - val_accuracy: 0.8390
+Epoch 5/8
+5397/5397 [==============================] - ETA: 0s - loss: 0.4958 - accuracy: 0.8663
+V11 Monitoring Epoch 5:
+   Loss gap (val - train): -0.0569
+   Accuracy gap (train - val): -0.0207
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+5397/5397 [==============================] - 711s 132ms/step - loss: 0.4958 - accuracy: 0.8663 - val_loss: 0.4389 - val_accuracy: 0.8870
+Epoch 6/8
+5397/5397 [==============================] - ETA: 0s - loss: 0.4314 - accuracy: 0.8946
+V11 Monitoring Epoch 6:
+   Loss gap (val - train): -0.0364
+   Accuracy gap (train - val): -0.0057
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+5397/5397 [==============================] - 710s 131ms/step - loss: 0.4314 - accuracy: 0.8946 - val_loss: 0.3949 - val_accuracy: 0.9003
+Epoch 7/8
+5397/5397 [==============================] - ETA: 0s - loss: 0.3887 - accuracy: 0.9090
+V11 Monitoring Epoch 7:
+   Loss gap (val - train): -0.0279
+   Accuracy gap (train - val): -0.0040
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+5397/5397 [==============================] - 717s 133ms/step - loss: 0.3887 - accuracy: 0.9090 - val_loss: 0.3608 - val_accuracy: 0.9131
+Epoch 8/8
+5397/5397 [==============================] - ETA: 0s - loss: 0.3596 - accuracy: 0.9174
+V11 Monitoring Epoch 8:
+   Loss gap (val - train): -0.0218
+   Accuracy gap (train - val): -0.0027
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+5397/5397 [==============================] - 709s 131ms/step - loss: 0.3596 - accuracy: 0.9174 - val_loss: 0.3378 - val_accuracy: 0.9201
+
+Trial 4 Complete [01h 35m 07s]
+val_loss: 0.337805837392807
+
+Best val_loss So Far: 0.32170528173446655
+Total elapsed time: 06h 19m 45s
+
+Optimal V11 CORRECTED hyperparameters found:
+   - Learning rate: 5e-06 (LOWER)
+   - Dropout rate: 0.5 (MORE AGGRESSIVE)
+   - L2 regularization: 0.2 (STRONGER)
+   - Noise factor: 0.03 (NEW - replaces label_smoothing)
+   - Optimal batch size: 6 (variable 4-8)
+--- Phase 1: Loading and processing corpus (V11 MODE - MAXIMUM REGULARIZATION CORRECTED) ---
+
+--- Corpus Balance Analysis ---
+Total clean records: 61674
+FAKE news (0): 30734 records (49.8%)
+REAL news (1): 30940 records (50.2%)
+-------------------------------------------------
+
+V11 Split: 70% training, 10% validation, 20% test...
+Using batch_size: 6
+Training set size: 43171 records (70.0%)
+Validation set size: 6167 records (10.0%)
+Test set size: 12336 records (20.0%)
+
+Loading tokenizer for model: 'distilbert-base-multilingual-cased'
+C:\Users\gabri\.conda\envs\tf-env\lib\site-packages\huggingface_hub\file_download.py:943: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Tokenizing with MAX_LENGTH=128 (reduced to avoid overfitting)...
+
+V11 CORRECTED configuration saved to: 'experiment_configuration_antioverfit_v11.txt'
+
+--- Phase 3: V11 CORRECTED Final Training ---
+GOAL: Loss gap < 0.04
+Patience: 8 epochs
+MAXIMUM regularization activated (without label_smoothing)
+Some weights of the PyTorch model were not used when initializing the TF 2.0 model TFDistilBertForSequenceClassification: ['vocab_projector.bias', 'vocab_layer_norm.weight', 'vocab_transform.weight', 'vocab_transform.bias', 'vocab_layer_norm.bias']
+- This IS expected if you are initializing TFDistilBertForSequenceClassification from a PyTorch model trained on another task or with another architecture (e.g. initializing a TFBertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing TFDistilBertForSequenceClassification from a PyTorch model that you expect to be exactly identical (e.g. initializing a TFBertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights or buffers of the TF 2.0 model TFDistilBertForSequenceClassification were not initialized from the PyTorch model and are newly initialized: ['pre_classifier.weight', 'pre_classifier.bias', 'classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+V11 CORRECTED: Using Adam with MAXIMUM regularization (without label_smoothing)
+Manual weight decay 2X activated
+Noise injection activated (replaces label_smoothing)
+
+Starting V11 CORRECTED training...
+V11 EXPECTATION:
+   - Loss gap: < 0.04 (vs V10: ~0.10)
+   - Improved convergence: Lines CLOSER
+   - Accuracy/generalization trade-off
+============================================================
+Epoch 1/30
+7196/7196 [==============================] - ETA: 0s - loss: 4.7783 - accuracy: 0.5346
+V11 Monitoring Epoch 1:
+   Loss gap (val - train): -4.0806
+   Accuracy gap (train - val): -0.0114
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+V11 graph saved: convergence_curve_v11_epoch_01.png
+7196/7196 [==============================] - 973s 133ms/step - loss: 4.7783 - accuracy: 0.5346 - val_loss: 0.6976 - val_accuracy: 0.5460 - lr: 5.0000e-06
+Epoch 2/30
+7196/7196 [==============================] - ETA: 0s - loss: 0.7161 - accuracy: 0.5260
+V11 Monitoring Epoch 2:
+   Loss gap (val - train): -0.0213
+   Accuracy gap (train - val): -0.0845
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+V11 graph saved: convergence_curve_v11_epoch_02.png
+7196/7196 [==============================] - 955s 133ms/step - loss: 0.7161 - accuracy: 0.5260 - val_loss: 0.6948 - val_accuracy: 0.6105 - lr: 5.0000e-06
+Epoch 3/30
+7196/7196 [==============================] - ETA: 0s - loss: 0.5764 - accuracy: 0.8255
+V11 Monitoring Epoch 3:
+   Loss gap (val - train): -0.1431
+   Accuracy gap (train - val): -0.0868
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+V11 graph saved: convergence_curve_v11_epoch_03.png
+7196/7196 [==============================] - 957s 133ms/step - loss: 0.5764 - accuracy: 0.8255 - val_loss: 0.4333 - val_accuracy: 0.9123 - lr: 5.0000e-06
+Epoch 4/30
+7196/7196 [==============================] - ETA: 0s - loss: 0.4103 - accuracy: 0.9304
+V11 Monitoring Epoch 4:
+   Loss gap (val - train): -0.0429
+   Accuracy gap (train - val): -0.0033
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+V11 graph saved: convergence_curve_v11_epoch_04.png
+7196/7196 [==============================] - 988s 137ms/step - loss: 0.4103 - accuracy: 0.9304 - val_loss: 0.3674 - val_accuracy: 0.9337 - lr: 5.0000e-06
+Epoch 5/30
+7196/7196 [==============================] - ETA: 0s - loss: 0.3555 - accuracy: 0.9469
+V11 Monitoring Epoch 5:
+   Loss gap (val - train): -0.0224
+   Accuracy gap (train - val): 0.0035
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+V11 graph saved: convergence_curve_v11_epoch_05.png
+7196/7196 [==============================] - 957s 133ms/step - loss: 0.3555 - accuracy: 0.9469 - val_loss: 0.3331 - val_accuracy: 0.9434 - lr: 5.0000e-06
+Epoch 6/30
+7196/7196 [==============================] - ETA: 0s - loss: 0.3246 - accuracy: 0.9578
+V11 Monitoring Epoch 6:
+   Loss gap (val - train): 0.0072
+   Accuracy gap (train - val): 0.0160
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+V11 graph saved: convergence_curve_v11_epoch_06.png
+7196/7196 [==============================] - 956s 133ms/step - loss: 0.3246 - accuracy: 0.9578 - val_loss: 0.3317 - val_accuracy: 0.9418 - lr: 5.0000e-06
+Epoch 7/30
+7196/7196 [==============================] - ETA: 0s - loss: 0.3054 - accuracy: 0.9639
+V11 Monitoring Epoch 7:
+   Loss gap (val - train): 0.0165
+   Accuracy gap (train - val): 0.0174
+EXCELLENT V11: Gap < 0.02 (perfect convergence)
+EXCELLENT V11: Accuracy gap < 0.02
+V11 graph saved: convergence_curve_v11_epoch_07.png
+7196/7196 [==============================] - 957s 133ms/step - loss: 0.3054 - accuracy: 0.9639 - val_loss: 0.3220 - val_accuracy: 0.9465 - lr: 5.0000e-06
+Epoch 8/30
+7196/7196 [==============================] - ETA: 0s - loss: 0.2870 - accuracy: 0.9716
+V11 Monitoring Epoch 8:
+   Loss gap (val - train): 0.0309
+   Accuracy gap (train - val): 0.0237
+GOOD V11: Gap between 0.02-0.04 (goal achieved)
+GOOD V11: Accuracy gap between 0.02-0.04
+V11 graph saved: convergence_curve_v11_epoch_08.png
+7196/7196 [==============================] - 958s 133ms/step - loss: 0.2870 - accuracy: 0.9716 - val_loss: 0.3179 - val_accuracy: 0.9479 - lr: 5.0000e-06
+Epoch 9/30
+7196/7196 [==============================] - ETA: 0s - loss: 0.2762 - accuracy: 0.9759
+Epoch 9: ReduceLROnPlateau reducing learning rate to 7.499999810534063e-07.
+
+V11 Monitoring Epoch 9:
+   Loss gap (val - train): 0.0429
+   Accuracy gap (train - val): 0.0301
+WARNING V11: Gap > 0.04 (outside goal)
+GOOD V11: Accuracy gap between 0.02-0.04
+V11 graph saved: convergence_curve_v11_epoch_09.png
+7196/7196 [==============================] - 955s 133ms/step - loss: 0.2762 - accuracy: 0.9759 - val_loss: 0.3190 - val_accuracy: 0.9458 - lr: 5.0000e-06
+Epoch 10/30
+7196/7196 [==============================] - ETA: 0s - loss: 0.2575 - accuracy: 0.9825
+V11 Monitoring Epoch 10:
+   Loss gap (val - train): 0.0509
+   Accuracy gap (train - val): 0.0318
+WARNING V11: Gap > 0.04 (outside goal)
+GOOD V11: Accuracy gap between 0.02-0.04
+V11 graph saved: convergence_curve_v11_epoch_10.png
+7196/7196 [==============================] - 957s 133ms/step - loss: 0.2575 - accuracy: 0.9825 - val_loss: 0.3084 - val_accuracy: 0.9507 - lr: 7.5000e-07
+Epoch 11/30
+7196/7196 [==============================] - ETA: 0s - loss: 0.2544 - accuracy: 0.9840
+V11 Monitoring Epoch 11:
+   Loss gap (val - train): 0.0528
+   Accuracy gap (train - val): 0.0341
+WARNING V11: Gap > 0.04 (outside goal)
+GOOD V11: Accuracy gap between 0.02-0.04
+V11 graph saved: convergence_curve_v11_epoch_11.png
+7196/7196 [==============================] - 956s 133ms/step - loss: 0.2544 - accuracy: 0.9840 - val_loss: 0.3072 - val_accuracy: 0.9499 - lr: 7.5000e-07
+Epoch 12/30
+7196/7196 [==============================] - ETA: 0s - loss: 0.2523 - accuracy: 0.9852
+Epoch 12: ReduceLROnPlateau reducing learning rate to 1.1249999545270838e-07.
+
+V11 Monitoring Epoch 12:
+   Loss gap (val - train): 0.0544
+   Accuracy gap (train - val): 0.0364
+WARNING V11: Gap > 0.04 (outside goal)
+GOOD V11: Accuracy gap between 0.02-0.04
+V11 graph saved: convergence_curve_v11_epoch_12.png
+7196/7196 [==============================] - 955s 133ms/step - loss: 0.2523 - accuracy: 0.9852 - val_loss: 0.3068 - val_accuracy: 0.9488 - lr: 7.5000e-07
+Epoch 13/30
+7196/7196 [==============================] - ETA: 0s - loss: 0.2500 - accuracy: 0.9855
+Epoch 13: ReduceLROnPlateau reducing learning rate to 1.6874999531069078e-08.
+
+V11 Monitoring Epoch 13:
+   Loss gap (val - train): 0.0571
+   Accuracy gap (train - val): 0.0356
+WARNING V11: Gap > 0.04 (outside goal)
+GOOD V11: Accuracy gap between 0.02-0.04
+V11 graph saved: convergence_curve_v11_epoch_13.png
+7196/7196 [==============================] - 955s 133ms/step - loss: 0.2500 - accuracy: 0.9855 - val_loss: 0.3071 - val_accuracy: 0.9499 - lr: 1.1250e-07
+Epoch 14/30
+7196/7196 [==============================] - ETA: 0s - loss: 0.2492 - accuracy: 0.9860
+Epoch 14: ReduceLROnPlateau reducing learning rate to 2.5312498763696567e-09.
+
+V11 Monitoring Epoch 14:
+   Loss gap (val - train): 0.0578
+   Accuracy gap (train - val): 0.0363
+WARNING V11: Gap > 0.04 (outside goal)
+GOOD V11: Accuracy gap between 0.02-0.04
+V11 graph saved: convergence_curve_v11_epoch_14.png
+7196/7196 [==============================] - 957s 133ms/step - loss: 0.2492 - accuracy: 0.9860 - val_loss: 0.3070 - val_accuracy: 0.9497 - lr: 1.6875e-08
+Epoch 15/30
+7196/7196 [==============================] - ETA: 0s - loss: 0.2489 - accuracy: 0.9863
+V11 Monitoring Epoch 15:
+   Loss gap (val - train): 0.0577
+   Accuracy gap (train - val): 0.0367
+WARNING V11: Gap > 0.04 (outside goal)
+GOOD V11: Accuracy gap between 0.02-0.04
+V11 graph saved: convergence_curve_v11_epoch_15.png
+7196/7196 [==============================] - 956s 133ms/step - loss: 0.2489 - accuracy: 0.9863 - val_loss: 0.3067 - val_accuracy: 0.9496 - lr: 2.5312e-09
+Epoch 16/30
+7196/7196 [==============================] - ETA: 0s - loss: 0.2489 - accuracy: 0.9862
+Epoch 16: ReduceLROnPlateau reducing learning rate to 1e-09.
+
+V11 Monitoring Epoch 16:
+   Loss gap (val - train): 0.0577
+   Accuracy gap (train - val): 0.0366
+WARNING V11: Gap > 0.04 (outside goal)
+GOOD V11: Accuracy gap between 0.02-0.04
+V11 graph saved: convergence_curve_v11_epoch_16.png
+7196/7196 [==============================] - 958s 133ms/step - loss: 0.2489 - accuracy: 0.9862 - val_loss: 0.3066 - val_accuracy: 0.9496 - lr: 2.5312e-09
+Epoch 17/30
+7196/7196 [==============================] - ETA: 0s - loss: 0.2487 - accuracy: 0.9864
+V11 Monitoring Epoch 17:
+   Loss gap (val - train): 0.0579
+   Accuracy gap (train - val): 0.0369
+WARNING V11: Gap > 0.04 (outside goal)
+GOOD V11: Accuracy gap between 0.02-0.04
+V11 graph saved: convergence_curve_v11_epoch_17.png
+7196/7196 [==============================] - 957s 133ms/step - loss: 0.2487 - accuracy: 0.9864 - val_loss: 0.3066 - val_accuracy: 0.9496 - lr: 1.0000e-09
+Epoch 18/30
+7196/7196 [==============================] - ETA: 0s - loss: 0.2490 - accuracy: 0.9859
+V11 Monitoring Epoch 18:
+   Loss gap (val - train): 0.0577
+   Accuracy gap (train - val): 0.0364
+WARNING V11: Gap > 0.04 (outside goal)
+GOOD V11: Accuracy gap between 0.02-0.04
+V11 graph saved: convergence_curve_v11_epoch_18.png
+7196/7196 [==============================] - 957s 133ms/step - loss: 0.2490 - accuracy: 0.9859 - val_loss: 0.3066 - val_accuracy: 0.9496 - lr: 1.0000e-09
+Epoch 19/30
+7196/7196 [==============================] - ETA: 0s - loss: 0.2491 - accuracy: 0.9861
+V11 Monitoring Epoch 19:
+   Loss gap (val - train): 0.0575
+   Accuracy gap (train - val): 0.0365
+WARNING V11: Gap > 0.04 (outside goal)
+GOOD V11: Accuracy gap between 0.02-0.04
+V11 graph saved: convergence_curve_v11_epoch_19.png
+7196/7196 [==============================] - 957s 133ms/step - loss: 0.2491 - accuracy: 0.9861 - val_loss: 0.3066 - val_accuracy: 0.9496 - lr: 1.0000e-09
+Epoch 20/30
+7196/7196 [==============================] - ETA: 0s - loss: 0.2488 - accuracy: 0.9863
+V11 Monitoring Epoch 20:
+   Loss gap (val - train): 0.0578
+   Accuracy gap (train - val): 0.0367
+WARNING V11: Gap > 0.04 (outside goal)
+GOOD V11: Accuracy gap between 0.02-0.04
+V11 graph saved: convergence_curve_v11_epoch_20.png
+7196/7196 [==============================] - 955s 133ms/step - loss: 0.2488 - accuracy: 0.9863 - val_loss: 0.3066 - val_accuracy: 0.9496 - lr: 1.0000e-09
+Epoch 21/30
+7196/7196 [==============================] - ETA: 0s - loss: 0.2487 - accuracy: 0.9861
+V11 Monitoring Epoch 21:
+   Loss gap (val - train): 0.0579
+   Accuracy gap (train - val): 0.0365
+WARNING V11: Gap > 0.04 (outside goal)
+GOOD V11: Accuracy gap between 0.02-0.04
+V11 graph saved: convergence_curve_v11_epoch_21.png
+7196/7196 [==============================] - 956s 133ms/step - loss: 0.2487 - accuracy: 0.9861 - val_loss: 0.3066 - val_accuracy: 0.9496 - lr: 1.0000e-09
+Epoch 22/30
+7196/7196 [==============================] - ETA: 0s - loss: 0.2491 - accuracy: 0.9858
+V11 Monitoring Epoch 22:
+   Loss gap (val - train): 0.0575
+   Accuracy gap (train - val): 0.0363
+WARNING V11: Gap > 0.04 (outside goal)
+GOOD V11: Accuracy gap between 0.02-0.04
+V11 graph saved: convergence_curve_v11_epoch_22.png
+7196/7196 [==============================] - 955s 133ms/step - loss: 0.2491 - accuracy: 0.9858 - val_loss: 0.3066 - val_accuracy: 0.9496 - lr: 1.0000e-09
+Epoch 23/30
+7196/7196 [==============================] - ETA: 0s - loss: 0.2481 - accuracy: 0.9868Restoring model weights from the end of the best epoch: 15.
+
+V11 Monitoring Epoch 23:
+   Loss gap (val - train): 0.0586
+   Accuracy gap (train - val): 0.0373
+WARNING V11: Gap > 0.04 (outside goal)
+GOOD V11: Accuracy gap between 0.02-0.04
+V11 graph saved: convergence_curve_v11_epoch_23.png
+7196/7196 [==============================] - 957s 133ms/step - loss: 0.2481 - accuracy: 0.9868 - val_loss: 0.3066 - val_accuracy: 0.9496 - lr: 1.0000e-09
+Epoch 23: early stopping
+
+COMPLETE V11 ANALYSIS: complete_convergence_analysis_v11.png
+V11 Goal: Gap < 0.04 NOT ACHIEVED
+Final gap: 0.059
+
+V11 CORRECTED training completed: 23 epochs
+
+V11 CORRECTED ANALYSIS - GOAL GAP < 0.04:
+   Final loss gap: 0.0586
+   RESULT: IMPROVED but not goal (<0.07)
+   Improvement vs V10: 0.041 (41.4%)
+   Best epoch: 17
+   Epochs post-best: 6
+
+--- Phase 4: V11 CORRECTED Evaluation ---
+2056/2056 [==============================] - 65s 31ms/step
+
+V11 CORRECTED FINAL RESULTS:
+   - Accuracy: 0.954 (95.4%)
+   - Goal gap: NOT ACHIEVED
+   - Convergence: IMPROVED
+   - Techniques used: Weight decay 2X + Noise injection + Variable batch + Strong L2
+
+Final metrics saved to: 'final_metrics_v11.txt'
+
+--- Phase 5: V11 Graphics Generation ---
+V11 confusion matrix saved as 'confusion_matrix_v11.png'
+
+--- Phase 6: Saving V11 model ---
+
+================================================================================
+V11 CORRECTED EXPERIMENT COMPLETED
+================================================================================
+V11 GOAL: Gap < 0.04
+RESULT: Gap = 0.0586
+STATUS: PARTIAL
+IMPROVEMENT vs V10: 41.4%
+Techniques: Without label_smoothing + Noise injection + Maximum regularization
+
+Metrics exported to: final_metrics_v11.txt
+
+(tf-env) C:\Users\gabri\Downloads\Articulo 1 JCR\Final_v2 11OCT2025>

@@ -1,0 +1,95 @@
+
+================================================================================
+        V11 FINAL METRICS - MAXIMUM REGULARIZATION (CORRECTED)
+================================================================================
+Experiment Date: 2025-10-12 00:13:16
+Model: distilbert-base-multilingual-cased
+Dataset: corpus_unificado_es_deforma_completo.csv
+
+--------------------------------------------------------------------------------
+                            TRAINING SUMMARY
+--------------------------------------------------------------------------------
+Total Epochs Completed: 23
+Best Epoch: 17
+Epochs After Best: 6
+
+V11 Goal: Loss gap < 0.04
+V11 Achievement: NO - GOAL NOT ACHIEVED
+Improvement vs V10: 41.4%
+
+--------------------------------------------------------------------------------
+                         FINAL EPOCH METRICS
+--------------------------------------------------------------------------------
+Training Accuracy:      0.9868 (98.68%)
+Validation Accuracy:    0.9496 (94.96%)
+Training Loss:          0.2481
+Validation Loss:        0.3066
+
+Loss Gap (Val - Train): 0.0586
+Accuracy Gap (Train - Val): 0.0373
+
+Gap Status:
+  - Loss Gap: IMPROVED (<0.07)
+  - Accuracy Gap: GOOD (<0.04)
+
+--------------------------------------------------------------------------------
+                        BEST EPOCH METRICS
+--------------------------------------------------------------------------------
+Training Accuracy:      0.9864 (98.64%)
+Validation Accuracy:    0.9496 (94.96%)
+Training Loss:          0.2487
+Validation Loss:        0.3066
+
+Loss Gap (Val - Train): 0.0579
+Accuracy Gap (Train - Val): 0.0369
+
+--------------------------------------------------------------------------------
+                        TEST SET EVALUATION
+--------------------------------------------------------------------------------
+Test Accuracy:          0.9536 (95.36%)
+
+Classification Report:
+                    Precision    Recall    F1-Score    Support
+
+FAKE (0)              0.9611      0.9450      0.9530      6148
+REAL (1)              0.9463      0.9620      0.9541      6188
+
+Macro Avg             0.9537      0.9535      0.9535      12336
+Weighted Avg          0.9537      0.9536      0.9535      12336
+
+--------------------------------------------------------------------------------
+                    V11 REGULARIZATION TECHNIQUES
+--------------------------------------------------------------------------------
+- Learning Rate: Very low (5e-6 to 8e-7)
+- Dropout: Aggressive (0.4-0.7)
+- L2 Regularization: Strong (0.05-0.5)
+- Noise Injection: Active (0.01-0.03) - Replaces label_smoothing
+- Variable Batch Size: 4-8
+- Manual Weight Decay: 0.02 (2x stronger)
+- Bias/Activity Regularization: 0.2 (2x stronger)
+- LR Reduction Factor: 0.15 (more aggressive)
+- Early Stopping Patience: 8 epochs
+
+--------------------------------------------------------------------------------
+                           CONVERGENCE ANALYSIS
+--------------------------------------------------------------------------------
+Final Convergence Status: IMPROVED
+
+Overfitting Risk: MODERATE
+
+Training Stability: MODERATE
+
+--------------------------------------------------------------------------------
+                              CONCLUSIONS
+--------------------------------------------------------------------------------
+V11 Objective (Gap < 0.04): NOT ACHIEVED
+Model Performance: EXCELLENT
+Generalization: MODERATE
+
+Recommended Actions:
+- Consider additional regularization techniques
+- May benefit from more training data or stronger regularization
+
+================================================================================
+                            END OF METRICS REPORT
+================================================================================
