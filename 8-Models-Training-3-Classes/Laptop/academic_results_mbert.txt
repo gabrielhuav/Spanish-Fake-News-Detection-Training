@@ -1,0 +1,19 @@
+====================================================
+FINAL ACADEMIC METRICS (mBERT)
+====================================================
+Overall Accuracy : 0.8241
+Macro Precision  : 0.8671
+Macro Recall     : 0.8401
+Macro F1-Score   : 0.8492
+Macro Specificity: 0.8903
+====================================================
+              precision    recall  f1-score   support
+
+        FAKE       0.82      0.66      0.73      4350
+        REAL       0.78      0.90      0.84      6189
+      SATIRE       1.00      0.96      0.98      1797
+
+    accuracy                           0.82     12336
+   macro avg       0.87      0.84      0.85     12336
+weighted avg       0.83      0.82      0.82     12336
+
