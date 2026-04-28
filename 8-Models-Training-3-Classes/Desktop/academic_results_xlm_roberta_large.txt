@@ -1,0 +1,19 @@
+====================================================
+FINAL ACADEMIC METRICS (XLM-RoBERTa-Large)
+====================================================
+Overall Accuracy : 0.8843
+Macro Precision  : 0.9069
+Macro Recall     : 0.9053
+Macro F1-Score   : 0.9061
+Macro Specificity: 0.9311
+====================================================
+              precision    recall  f1-score   support
+
+        FAKE       0.84      0.83      0.83      4350
+        REAL       0.88      0.89      0.89      6189
+      SATIRE       1.00      1.00      1.00      1797
+
+    accuracy                           0.88     12336
+   macro avg       0.91      0.91      0.91     12336
+weighted avg       0.88      0.88      0.88     12336
+

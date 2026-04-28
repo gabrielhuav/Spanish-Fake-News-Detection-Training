@@ -1,0 +1,19 @@
+====================================================
+FINAL ACADEMIC METRICS (DistilBERT Multilingual)
+====================================================
+Overall Accuracy : 0.8795
+Macro Precision  : 0.9027
+Macro Recall     : 0.9000
+Macro F1-Score   : 0.9012
+Macro Specificity: 0.9280
+====================================================
+              precision    recall  f1-score   support
+
+        FAKE       0.84      0.82      0.83      4350
+        REAL       0.87      0.89      0.88      6189
+      SATIRE       0.99      0.99      0.99      1797
+
+    accuracy                           0.88     12336
+   macro avg       0.90      0.90      0.90     12336
+weighted avg       0.88      0.88      0.88     12336
+

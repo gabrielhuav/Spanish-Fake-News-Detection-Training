@@ -1,0 +1,19 @@
+====================================================
+FINAL ACADEMIC METRICS (RoBERTa-Base-BNE)
+====================================================
+Overall Accuracy : 0.6402
+Macro Precision  : 0.6581
+Macro Recall     : 0.6651
+Macro F1-Score   : 0.5791
+Macro Specificity: 0.7667
+====================================================
+              precision    recall  f1-score   support
+
+        FAKE       0.50      0.03      0.06      4350
+        REAL       0.60      0.96      0.74      6189
+      SATIRE       0.88      1.00      0.94      1797
+
+    accuracy                           0.64     12336
+   macro avg       0.66      0.67      0.58     12336
+weighted avg       0.60      0.64      0.53     12336
+

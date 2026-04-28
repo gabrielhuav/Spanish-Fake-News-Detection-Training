@@ -1,0 +1,19 @@
+====================================================
+FINAL ACADEMIC METRICS (BETO V11)
+====================================================
+Overall Accuracy : 0.8898
+Macro Precision  : 0.9129
+Macro Recall     : 0.9070
+Macro F1-Score   : 0.9095
+Macro Specificity: 0.9331
+====================================================
+              precision    recall  f1-score   support
+
+        FAKE       0.87      0.81      0.84      4350
+        REAL       0.87      0.91      0.89      6189
+      SATIRE       1.00      0.99      1.00      1797
+
+    accuracy                           0.89     12336
+   macro avg       0.91      0.91      0.91     12336
+weighted avg       0.89      0.89      0.89     12336
+
