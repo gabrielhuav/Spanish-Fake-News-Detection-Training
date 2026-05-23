@@ -1,0 +1,9 @@
+{
+  "source": "ElMundoToday",
+  "n": 1000,
+  "satire_recall": 0.081,
+  "errors_to_fake": 796,
+  "errors_to_real": 123,
+  "mean_confidence": 0.7609008204638958,
+  "insource_recall": 1.0
+}
